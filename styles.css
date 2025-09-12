@@ -29,7 +29,8 @@ a {
   color: var(--color-accent);
 }
 
-header, footer {
+header,
+footer {
   background: var(--color-main);
   color: white;
   padding: 1rem 4rem;
@@ -49,12 +50,14 @@ footer {
   bottom: 0;
 }
 
-#site-title, #footer-title {
+#site-title,
+#footer-title {
   font-weight: normal;
   font-size: 1.8rem;
 }
 
-#site-title-bold, #footer-title-bold {
+#site-title-bold,
+#footer-title-bold {
   font-weight: bold;
   margin-left: 0.25rem;
   color: var(--color-secondary);
@@ -97,7 +100,7 @@ main {
 /* ===== Restaurant Grid ===== */
 .restaurant-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-columns: repeat(4, 1fr); /* 3 equal columns */
   gap: 2rem; /* space between cards */
   padding: 2rem;
   justify-items: center; /* centers cards in each column */
@@ -110,32 +113,33 @@ main {
   align-items: center;
   text-align: center;
   width: 100%; /* fills grid column */
-  height: 50vh;
-  background: var(--color-card-bg);
+  height: 30rem;
+  background: #fff;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   justify-content: space-evenly;
   border: 1px solid #ccc;
+  aspect-ratio: 3 / 4;
 }
 
 .restaurant-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .restaurant-card img {
   width: 100%;
-  height: 70%;
-  object-fit: cover;
+  height: 80%;
+  object-fit: contain;
   border-radius: 5px;
   margin-bottom: 1rem;
   border: 1px solid var(--color-secondary);
 }
 
 .restaurant-card h3 {
-  font-size: 4rem;
+  font-size: 2.7rem;
   color: var(--color-secondary);
   margin: 0;
 }
@@ -159,16 +163,16 @@ main {
   padding: 1rem;
   text-align: center;
   border: 1px solid #ccc;
-  min-height: 380px; /* ensures consistent height even if description is short */
+  height: 30rem;
 }
 
 .menu-item img {
-  height: 60%;
   width: 100%;
+  height: 70%;
   object-fit: cover;
   border-radius: 5px;
-  margin-bottom: 0.75rem;
-  border: 1px solid var(--color-secondary)
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-secondary);
 }
 
 .menu-item h3 {
@@ -190,8 +194,6 @@ main {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--color-text);
-  padding: 0.5rem 0;
-  border-bottom: 1px dotted #ccc;
 }
 
 .order-btn {
@@ -204,6 +206,7 @@ main {
   cursor: pointer;
   font-weight: 600;
   height: 20%;
+  max-height: 3rem;
 }
 
 .order-btn:hover {
@@ -218,7 +221,7 @@ main {
     gap: 1rem;
     padding: 1rem;
   }
-  
+
   .restaurant-card img,
   .menu-item img {
     max-height: 120px;
@@ -228,7 +231,6 @@ main {
     min-height: auto;
   }
 }
-
 
 /* Back link */
 #back-link {
@@ -285,7 +287,7 @@ main {
     gap: 1rem;
     padding: 1rem;
   }
-  
+
   .restaurant-card img,
   .menu-item img {
     max-height: 120px;
@@ -304,4 +306,234 @@ main {
   .restaurant-card {
     max-width: 80%; /* make card smaller than screen width */
   }
+}
+
+#restaurants-text-top {
+  justify-self: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  padding-top: 1rem;
+  width: fit-content;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+#bronzecafe-logo {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+}
+
+#shinjuku-logo {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+}
+
+#pronetoplants-logo {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.zoom-container {
+  transform: scale(1); /* 1 = no zoom, change as needed */
+  transform-origin: top left; /* scale from top left */
+  width: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("foodpattern2.jpg");
+  background-repeat: repeat;
+  background-size: 15%;
+  background-position: top left;
+  background-attachment: fixed;
+}
+
+.zoom-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-text-row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px dotted #ccc;
+}
+
+#cart-link {
+  color: var(--color-secondary);
+  font-size: 1.5rem; /* size of icon */
+  justify-self: end; /* keeps it on the right side */
+  transition: color 0.2s ease;
+}
+
+#cart-link:hover {
+  color: #33b34a; /* hover color */
+}
+
+/* Sidebar base */
+#cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -20%; /* hidden off screen */
+  width: 20%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 1001;
+  padding: 1rem;
+  overflow-y: hidden;
+}
+
+/* When open */
+#cart-sidebar.open {
+  right: 0;
+}
+
+/* Overlay */
+#cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+#cart-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Close button */
+#close-cart {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  float: right;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.cart-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-main);
+}
+
+#cart-sidebar h2 {
+  margin: 0;
+  margin-top: 0.2rem;
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  text-align: left;
+}
+
+.cart-footer {
+  position: sticky;
+  bottom: 0;
+  justify-self: center;
+  width: calc(100% - 2rem);
+  width: 100%;
+  display: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.3rem 0;
+}
+
+#checkout-btn {
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  margin: 1rem auto 0;
+  display: block;
+}
+.cart-content {
+  height: calc(100% - 19rem);
+  overflow-y: auto;
+}
+
+.cart-label {
+  font-weight: bold;
+}
+
+#order-notes {
+  width: 100%;
+  height: 5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  margin-top: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+#order-notes:active,
+#order-notes:focus {
+  outline: none;
+  border: 2px solid var(--color-secondary);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background-color: red;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden; /* hidden when count = 0 */
+}
+
+#cart-link {
+  position: relative; /* so badge is positioned relative to the cart icon */
+  display: inline-block;
 }
