@@ -58,8 +58,7 @@ const restaurants = [
       {
         name: "Chicken Sandwich",
         price: "$8.50",
-        description:
-          "Grilled or crispy chicken sandwich with lettuce and tomato",
+        description: "Grilled or crispy chicken sandwich with lettuce and tomato",
         image: "images/chicken-sandwich.jpg",
       },
       {
@@ -82,22 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       sidebar.classList.toggle("open");
     });
   }
-
-  // ===== Restaurant List (for index.html) =====
-  const restaurantList = document.getElementById("restaurant-list");
-  if (restaurantList) {
-    restaurants.forEach((rest) => {
-      const li = document.createElement("li");
-      li.textContent = rest.name;
-
-      li.addEventListener("click", () => {
-        const fileName = rest.name.toLowerCase().replace(/\s+/g, "") + ".html";
-        window.location.href = fileName;
-      });
-
-      restaurantList.appendChild(li);
-    });
-  }
 });
 
 // ======= Restaurant Page + Modal Logic =======
@@ -111,30 +94,37 @@ const modalPrice = document.getElementById("modal-price");
 const closeModalBtn = document.getElementById("close-modal");
 
 if (restaurantNameEl && menuItemsEl) {
-  // Determine which restaurant based on HTML file name
-  const fileName = window.location.pathname.split("/").pop(); // e.g., tacotarian.html
+  const fileName = window.location.pathname.split("/").pop();
   const restaurant = restaurants.find(
     (r) => r.name.toLowerCase().replace(/\s+/g, "") + ".html" === fileName
   );
 
-  if (!restaurant) return; // fallback if no match
+  if (!restaurant) return;
 
   restaurantNameEl.textContent = restaurant.name;
 
-  // Populate menu grid
   restaurant.items.forEach((item) => {
     const card = document.createElement("div");
     card.className = "menu-item";
 
+    // Image wrapper to maintain aspect ratio
     card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}">
+      <div class="menu-img-wrapper">
+        <img src="${item.image}" alt="${item.name}">
+      </div>
       <h3>${item.name}</h3>
       <p class="description">${item.description}</p>
       <p class="price">${item.price}</p>
       <button class="order-btn">See Details</button>
     `;
 
-    // Show modal with item details
+    const imgEl = card.querySelector("img");
+    imgEl.style.width = "100%";
+    imgEl.style.height = "auto"; // keeps aspect ratio
+    imgEl.style.objectFit = "cover";
+    imgEl.style.borderRadius = "5px";
+
+    // Modal logic
     card.querySelector(".order-btn").addEventListener("click", () => {
       modalImage.src = item.image;
       modalImage.alt = item.name;
@@ -148,7 +138,7 @@ if (restaurantNameEl && menuItemsEl) {
     menuItemsEl.appendChild(card);
   });
 
-  // Close modal button
+  // Close modal
   closeModalBtn.addEventListener("click", () => {
     modal.close();
   });
