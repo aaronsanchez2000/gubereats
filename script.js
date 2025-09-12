@@ -1,145 +1,160 @@
-// ======= Restaurant Data =======
-const restaurants = [
-  {
-    name: "Tacotarian",
-    items: [
-      {
-        name: "Carne Asada Fries",
-        price: "$10.99",
-        description: "Fries topped with carne asada, cheese, and guacamole",
-        image: "images/carne-asada-fries.jpg",
-      },
-      {
-        name: "Tacos",
-        price: "$3.50 each",
-        description: "Choice of carne asada, chicken, or veggie",
-        image: "images/tacos.jpg",
-      },
-      {
-        name: "Bean Burrito",
-        price: "$7.99",
-        description: "Flour tortilla with refried beans, cheese, and salsa",
-        image: "images/bean-burrito.jpg",
-      },
-    ],
-  },
-  {
-    name: "Garden Grill",
-    items: [
-      {
-        name: "Chicken Tenders",
-        price: "$8.99",
-        description: "Crispy tenders served with your choice of sauce",
-        image: "images/chicken-tenders.jpg",
-      },
-      {
-        name: "Quesadilla",
-        price: "$6.50",
-        description: "Cheese quesadilla with optional chicken or veggies",
-        image: "images/quesadilla.jpg",
-      },
-      {
-        name: "Caesar Salad",
-        price: "$7.50",
-        description: "Romaine lettuce, parmesan, croutons, and Caesar dressing",
-        image: "images/caesar-salad.jpg",
-      },
-    ],
-  },
-  {
-    name: "Prone to Plants",
-    items: [
-      {
-        name: "Chicken Wings",
-        price: "$9.99",
-        description: "10 wings tossed in your choice of sauce",
-        image: "images/chicken-wings.jpg",
-      },
-      {
-        name: "Chicken Sandwich",
-        price: "$8.50",
-        description: "Grilled or crispy chicken sandwich with lettuce and tomato",
-        image: "images/chicken-sandwich.jpg",
-      },
-      {
-        name: "Fries",
-        price: "$3.99",
-        description: "Crispy golden fries with optional seasoning",
-        image: "images/fries.jpg",
-      },
-    ],
-  },
-];
+emailjs.init("oMh6h2Ca2O8LCjM0L"); // initializing emailjs for checkout
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ===== Sidebar Toggle =====
-  const sidebar = document.getElementById("sidebar");
-  const hamburger = document.getElementById("menu-icon");
+// ===== Sidebar Toggle =====
+const cartLink = document.getElementById("cart-link");
+const cartSidebar = document.getElementById("cart-sidebar");
+const cartOverlay = document.getElementById("cart-overlay");
+const closeCartBtn = document.getElementById("close-cart");
 
-  if (sidebar && hamburger) {
-    hamburger.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-    });
-  }
+cartLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  cartSidebar.classList.add("open");
+  cartOverlay.classList.add("active");
 });
 
-// ======= Restaurant Page + Modal Logic =======
-const restaurantNameEl = document.getElementById("restaurant-name");
-const menuItemsEl = document.getElementById("menu-items");
-const modal = document.getElementById("item-modal");
-const modalImage = document.getElementById("modal-image");
-const modalTitle = document.getElementById("modal-title");
-const modalDescription = document.getElementById("modal-description");
-const modalPrice = document.getElementById("modal-price");
-const closeModalBtn = document.getElementById("close-modal");
+closeCartBtn.addEventListener("click", () => {
+  cartSidebar.classList.remove("open");
+  cartOverlay.classList.remove("active");
+});
 
-if (restaurantNameEl && menuItemsEl) {
-  const fileName = window.location.pathname.split("/").pop();
-  const restaurant = restaurants.find(
-    (r) => r.name.toLowerCase().replace(/\s+/g, "") + ".html" === fileName
-  );
+cartOverlay.addEventListener("click", () => {
+  cartSidebar.classList.remove("open");
+  cartOverlay.classList.remove("active");
+});
 
-  if (!restaurant) return;
+// ===== Cart Logic =====
+const addToCartButtons = document.querySelectorAll(".order-btn");
+const cartContent = document.querySelector(".cart-content");
+const cartTotalAmount = document.querySelector(".cart-total-amount");
 
-  restaurantNameEl.textContent = restaurant.name;
+let cart = []; // stores items as an array of names
+let cartCount = 0;
+const cartBadge = document.getElementById("cart-count");
 
-  restaurant.items.forEach((item) => {
-    const card = document.createElement("div");
-    card.className = "menu-item";
+// Update cart display and badge
+function updateCart() {
+  cartContent.innerHTML = "";
 
-    // Image wrapper to maintain aspect ratio
-    card.innerHTML = `
-      <div class="menu-img-wrapper">
-        <img src="${item.image}" alt="${item.name}">
+  cart.forEach((itemName, index) => {
+    const row = document.createElement("div");
+    row.classList.add("cart-row");
+    row.style.display = "flex";
+    row.style.justifyContent = "space-between";
+    row.style.alignItems = "center";
+    row.style.marginBottom = "1rem";
+
+    // add ❌ button
+    row.innerHTML = `
+      <span>${itemName}</span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span>1 boop</span>
+        <button class="remove-btn" data-index="${index}" style="
+          background:none;
+          border:none;
+          color:red;
+          font-size:1rem;
+          cursor:pointer;
+        ">❌</button>
       </div>
-      <h3>${item.name}</h3>
-      <p class="description">${item.description}</p>
-      <p class="price">${item.price}</p>
-      <button class="order-btn">See Details</button>
     `;
 
-    const imgEl = card.querySelector("img");
-    imgEl.style.width = "100%";
-    imgEl.style.height = "auto"; // keeps aspect ratio
-    imgEl.style.objectFit = "cover";
-    imgEl.style.borderRadius = "5px";
-
-    // Modal logic
-    card.querySelector(".order-btn").addEventListener("click", () => {
-      modalImage.src = item.image;
-      modalImage.alt = item.name;
-      modalTitle.textContent = item.name;
-      modalDescription.textContent =
-        "Here you can select meat, quantity, etc. (placeholder)";
-      modalPrice.textContent = item.price;
-      modal.showModal();
-    });
-
-    menuItemsEl.appendChild(card);
+    cartContent.appendChild(row);
   });
 
-  // Close modal
-  closeModalBtn.addEventListener("click", () => {
-    modal.close();
+  // Update total
+  cartTotalAmount.textContent = `${cart.length} boop${
+    cart.length !== 1 ? "s" : ""
+  }`;
+
+  // Update badge
+  cartCount = cart.length;
+  if (cartCount > 0) {
+    cartBadge.textContent = cartCount;
+    cartBadge.style.visibility = "visible";
+  } else {
+    cartBadge.style.visibility = "hidden";
+  }
+
+  // attach event listeners to all remove buttons
+  const removeButtons = cartContent.querySelectorAll(".remove-btn");
+  removeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
+      cart.splice(index, 1); // remove that item
+      updateCart(); // refresh cart
+    });
   });
 }
+
+// Handle Add to Cart button
+addToCartButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const menuItem = btn.closest(".menu-item");
+    const itemName = menuItem.querySelector(".menu-item-name").textContent;
+
+    cart.push(itemName);
+    updateCart();
+  });
+});
+
+// Initialize cart
+updateCart();
+
+const checkoutBtn = document.getElementById("checkout-btn");
+const orderNotes = document.getElementById("order-notes");
+
+// Handle checkout click
+checkoutBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  // Collect data
+  const restaurantName =
+    document.querySelector(".header-restaurant .restaurant-name")
+      ?.textContent || "Unknown Restaurant";
+
+  const cartDetails = cart.map((itemName) => `1x ${itemName}`).join("\n");
+  const total = `${cart.length} boop${cart.length !== 1 ? "s" : ""}`;
+  const notesText = orderNotes.value || "None";
+
+  emailjs
+    .send("service_k4iheu8", "template_cwyrl8j", {
+      restaurant_name: restaurantName,
+      items: cartDetails,
+      notes: notesText,
+      total: total,
+      email: "aaronsanchez2000@yahoo.com",
+    })
+    .then(() => {
+      console.log("Email sent successfully!");
+
+      const orderMessage = document.createElement("div");
+      orderMessage.textContent = "Order submitted!";
+      orderMessage.style.fontWeight = "600";
+      orderMessage.style.textAlign = "center";
+      orderMessage.style.fontSize = "2rem";
+      orderMessage.style.marginTop = "0.5rem";
+      orderMessage.style.marginBottom = "0.5rem";
+      orderMessage.style.color = "var(--color-secondary)";
+
+      checkoutBtn.replaceWith(orderMessage);
+
+      cart = [];
+      updateCart();
+      orderNotes.value = "";
+
+      // Page refresh after 5 seconds
+      setTimeout(() => {
+        location.reload();
+      }, 5000);
+    })
+
+    .catch((err) => {
+      console.error("Email failed:", err);
+      alert("Failed to submit order. Please try again.");
+    });
+});
