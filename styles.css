@@ -8,201 +8,194 @@
   --color-card-bg: #fcfcfc;
 }
 
-html {
-  box-sizing: border-box;
-  font-family: var(--font-base);
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-  border: red solid 1px; /* debug border, remove later */
+  box-sizing: border-box;
+  border: red solid 0px; /* for debugging layout */
 }
 
 body {
+  font-family: var(--font-base);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
+  min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-text);
-  padding: 0;
-  margin: 0;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
 a {
-  color: var(--color-accent);
   text-decoration: none;
+  color: var(--color-accent);
 }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  width: 100%;
-  min-height: 100vh;
-}
-
-/* header section */
-header {
-  grid-area: header;
+header, footer {
   background: var(--color-main);
-  padding: 1rem;
+  color: white;
+  padding: 1rem 4rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+header {
   position: sticky;
   top: 0;
 }
 
-#menu-icon {
-  font-size: 1.25rem;
-  color: var(--color-secondary);
-  cursor: pointer;
-  margin-right: 1rem;
-}
-
-#site-title {
-  color: var(--color-secondary);
-  font-size: 1.5rem;
-  text-align: left;
-  font-weight: normal;
-}
-
-#site-title-bold {
-  font-weight: bold;
-  margin-left: 0.25rem;
-}
-
-/* main section */
-main {
-  grid-area: main;
-  background: var(--color-bg);
-  padding: 1rem;
-  overflow: auto;
-  overflow-wrap: break-word;
-}
-
-/* footer section */
 footer {
-  grid-area: footer;
-  background: var(--color-main);
-  padding: 1rem;
+  position: relative;
+  bottom: 0;
 }
 
-footer p {
-  color: var(--color-secondary);
-  font-size: 0.875rem;
-}
-
-#footer-title {
-  color: white;
-  font-size: 1.25rem;
+#site-title, #footer-title {
   font-weight: normal;
+  font-size: 1.8rem;
 }
 
-#footer-title-bold {
+#site-title-bold, #footer-title-bold {
   font-weight: bold;
   margin-left: 0.25rem;
-}
-
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -250px; /* hidden by default */
-  width: 250px;
-  height: 100%;
-  background-color: var(--color-bg);
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  overflow-y: auto;
-  transition: left 0.3s ease;
-  z-index: 1000;
-}
-
-.sidebar.open {
-  left: 0;
-}
-
-#restaurant-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
-}
-
-#restaurant-list li:hover {
   color: var(--color-secondary);
 }
 
-/* Menu Grid */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
+main {
+  flex: 1;
+  padding: 1rem 2rem;
 }
 
-.menu-item {
-  background-color: var(--color-card-bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  padding: 15px;
+#restaurants-text-top {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-.menu-item img {
-  width: 100%;
-  border-radius: 5px;
-  object-fit: cover;
-  height: 150px;
+#restaurants-title {
+  font-size: 4rem;
+  color: var(--color-secondary);
 }
 
-.menu-item h3 {
-  margin: 0;
-  font-weight: 600;
-}
-
-.menu-item .description {
-  font-size: 0.9rem;
+#restaurants-description {
+  font-size: 1.1rem;
   color: #555;
 }
 
-.menu-item .price {
+.header-restaurant {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* left link | center name | right filler */
+  align-items: center;
+  padding: 1rem 4rem; /* matches main grid */
+}
+
+.restaurant-name {
+  justify-self: center; /* perfectly centered */
+  font-size: 2rem;
+  color: var(--color-secondary);
+  margin: 0; /* remove margin interfering with centering */
+}
+
+/* ===== Restaurant Grid ===== */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 2rem; /* space between cards */
+  padding: 2rem;
+  justify-items: center; /* centers cards in each column */
+  align-items: stretch;
+}
+
+.restaurant-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* fills grid column */
+  height: 50vh;
+  background: var(--color-card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  justify-content: space-evenly;
+  border: 1px solid #ccc;
+}
+
+.restaurant-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-secondary);
+}
+
+.restaurant-card h3 {
+  font-size: 4rem;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+/* ===== Menu Grid ===== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: stretch; /* ensures equal width for menu items */
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ensures buttons stick to bottom */
+  background-color: var(--color-card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  min-height: 380px; /* ensures consistent height even if description is short */
+}
+
+.menu-item img {
+  height: 60%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--color-secondary)
+}
+
+.menu-item h3 {
+  font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 0;
+  color: var(--color-secondary);
+}
+
+.menu-item-description {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 1rem 0;
+  font-style: italic;
+  flex-grow: 1; /* takes up extra space to push button down */
+}
+
+.menu-item-price {
+  font-size: 1.2rem;
+  font-weight: bold;
   color: var(--color-text);
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted #ccc;
 }
 
 .order-btn {
+  margin-top: auto; /* sticks to bottom */
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -210,97 +203,70 @@ footer p {
   color: #fff;
   cursor: pointer;
   font-weight: 600;
+  height: 20%;
 }
 
 .order-btn:hover {
   background-color: #33b34a;
 }
 
-/* Back link on restaurant page */
+/* ===== Responsive tweaks ===== */
+@media (max-width: 480px) {
+  .restaurant-grid,
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .restaurant-card img,
+  .menu-item img {
+    max-height: 120px;
+  }
+
+  .menu-item {
+    min-height: auto;
+  }
+}
+
+
+/* Back link */
 #back-link {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-weight: 600;
   color: var(--color-secondary);
+  font-weight: 600;
+  justify-self: start;
 }
 
-/* ===== Modal Styling ===== */
-/* modal backdrop */
-#item-modal::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* modal container */
+/* Modal */
 #item-modal {
   border: none;
   border-radius: 12px;
-  padding: 0;
   width: 80%;
-  height: 90%;
-  background-color: var(--color-card-bg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  font-family: var(--font-base);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-self: center;
-  justify-self: center;
+  max-width: 700px;
+  padding: 0;
 }
 
-/* modal content (image + text) */
 #item-modal .modal-content {
   display: flex;
   gap: 20px;
   padding: 20px;
-  text-align: left;
+  align-items: center;
 }
 
-/* image on the left */
-#item-modal .modal-content img {
+#item-modal img {
   flex: 1;
-  height: 30rem;
   border-radius: 5px;
   object-fit: cover;
-  flex-shrink: 0;
 }
 
-/* text on the right */
 #item-modal .modal-text {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-/* text styling */
-#item-modal h3 {
-  margin: 0 0 10px 0;
-  color: var(--color-main);
-  font-size: 2.5rem;
-}
-
-#item-modal p {
-  margin: 5px 0;
-}
-
-#modal-description {
-  font-size: 0.875rem;
-  font-style: italic;
-  color: #666;
-}
-
-#modal-price {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #444;
-}
-
-/* full-width close button at bottom */
 #close-modal {
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 0 0 12px 12px;
   background-color: var(--color-secondary);
   color: #fff;
   font-weight: 600;
@@ -311,43 +277,31 @@ footer p {
   background-color: #33b34a;
 }
 
-/* responsive: stack image and text on small screens */
-@media (max-width: 600px) {
-  #item-modal .modal-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Responsive */
+@media (max-width: 480px) {
+  .restaurant-grid,
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .restaurant-card img,
+  .menu-item img {
+    max-height: 120px;
   }
 
-  #item-modal .modal-content img {
-    width: 80%;
-    height: auto;
-    margin-bottom: 15px;
+  .menu-item {
+    min-height: auto;
   }
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-  header,
-  footer {
-    justify-content: center;
-    padding: 0.5rem;
-  }
-  #site-title {
-    font-size: 2rem;
-    text-align: center;
+@media (max-width: 768px) {
+  .restaurant-grid {
+    grid-template-columns: 1fr; /* single column on tablets/mobile */
   }
 
-  #menu-icon {
-    display: none;
-  }
-
-  #footer-title {
-    font-size: 1rem;
-  }
-
-  .menu-grid {
-    gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  .restaurant-card {
+    max-width: 80%; /* make card smaller than screen width */
   }
 }
