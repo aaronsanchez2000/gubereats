@@ -1,5 +1,26 @@
 emailjs.init("oMh6h2Ca2O8LCjM0L"); // initializing emailjs for checkout
 
+function fitTextToCard() {
+  const cardTitles = document.querySelectorAll(".restaurant-card h3");
+
+  cardTitles.forEach((title) => {
+    let fontSize = parseInt(window.getComputedStyle(title).fontSize); // starting font size
+    const maxWidth = title.parentElement.clientWidth - 20; // small padding buffer
+
+    // Shrink font until it fits
+    while (title.scrollWidth > maxWidth && fontSize > 12) {
+      fontSize -= 1;
+      title.style.fontSize = fontSize + "px";
+    }
+  });
+}
+
+// Run on page load
+window.addEventListener("load", fitTextToCard);
+
+// Optional: run on window resize to stay responsive
+window.addEventListener("resize", fitTextToCard);
+
 // ===== Sidebar Toggle =====
 const cartLink = document.getElementById("cart-link");
 const cartSidebar = document.getElementById("cart-sidebar");
