@@ -738,7 +738,6 @@ main {
     height: 100%;
     margin: 0 auto; /* backup centering */
     display: block;
-    border: 1px solid red;
     aspect-ratio: 1 / 1;
   }
 }
@@ -804,3 +803,4 @@ main {
 .not-done {
   background: #ffcece;
 }
+
