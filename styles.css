@@ -339,7 +339,7 @@ main {
   background-repeat: repeat;
   background-size: 15%;
   background-position: top left;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
 
 .zoom-container a {
@@ -778,3 +778,4 @@ main {
 .not-done {
   background: #ffcece;
 }
+
