@@ -721,6 +721,26 @@ main {
   #back-link {
     width: 70%;
   }
+
+  .restaurant-card h3 {
+    display: none;
+  }
+
+  .restaurant-card {
+    display: flex; /* turn into flexbox */
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically if needed */
+    padding: 0.5rem;
+    height: 10rem;
+  }
+
+  .restaurant-card img {
+    height: 100%;
+    margin: 0 auto; /* backup centering */
+    display: block;
+    border: 1px solid red;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 @media (max-width: 320px) {
@@ -774,6 +794,10 @@ main {
 
   .menu-item h3 {
     font-size: 0.8rem;
+  }
+
+  .restaurant-card {
+    height: 6.5rem;
   }
 }
 
