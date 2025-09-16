@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burger King Menu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="header-restaurant">
+        <a href="index.html" id="back-link">← Back to restaurants</a>
+        <h1 class="restaurant-name">Burger King</h1>
+        <a href="#" id="cart-link">
+          <i class="fa-solid fa-cart-shopping"></i
+          ><span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </header>
+
+      <main>
+        <div id="menu-items" class="menu-grid menu-too-short">
+          <div class="menu-item">
+            <img
+              src="https://media.istockphoto.com/id/512034336/photo/burger-king-soda-paper-cup-with-red-straw.jpg?s=612x612&w=0&k=20&c=pGrLnLakTf7iAS3EbtXbha6hQFL80erqHpmbeP97nKo="
+              alt="Drinkie"
+              class="menu-item-image menu-item-no-zoom"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Drinkie</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Choice of drinkie.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://vegnews.com/media/W1siZiIsIjE0ODU4L1ZlZ05ld3MuSW1wb3NzaWJsZVdob3BwZXIucG5nIl0sWyJwIiwib3B0aW1pemUiXV0/VegNews.ImpossibleWhopper.png?sha=a5b0d0bf64cc21ad"
+              alt="Impossible Whopper"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Impossible Whopper</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Impossible Whopper w/o mayo.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://www.bk-menus.com/wp-content/uploads/2024/09/French_Fries-removebg-preview.webp"
+              alt="Large Fries"
+              class="menu-item-image menu-item-no-zoom"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Large Fries</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Large container of fries.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <h2 id="footer-title">Guber<span id="footer-title-bold">Eats</span></h2>
+        <p id="copyright">© 2025 Bab Incorporated. All rights reserved.</p>
+      </footer>
+    </div>
+    <!-- sidebar -->
+    <div id="cart-sidebar">
+      <button id="close-cart">&times;</button>
+      <h2>Your Cart</h2>
+      <div class="cart-header">
+        <h3>Items</h3>
+        <h3>Price</h3>
+      </div>
+      <div class="cart-content">
+        <!-- content filled with js -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span class="cart-label">Total:</span>
+          <span class="cart-value cart-total-amount"></span>
+        </div>
+        <textarea
+          id="order-notes"
+          placeholder="Which meat(s)? Any sauce/sides?"
+        ></textarea>
+        <button id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+    <!-- overlay (dim background when cart is open) -->
+    <div id="cart-overlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
