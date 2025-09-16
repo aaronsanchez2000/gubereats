@@ -313,7 +313,9 @@ main {
   border-radius: 8px;
   padding: 2rem;
   padding-top: 1rem;
-  width: fit-content;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 0;
@@ -328,7 +330,7 @@ main {
 
 .zoom-container {
   transform: scale(1); /* 1 = no zoom, change as needed */
-  transform-origin: top left; /* scale from top left */
+  transform-origin: top center; /* scale from top center */
   width: 100%;
   overflow-x: hidden;
   background: linear-gradient(
@@ -778,4 +780,3 @@ main {
 .not-done {
   background: #ffcece;
 }
-
