@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Peinto Thai Menu</title>
+    <title>Yukon Pizza Menu</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
@@ -23,7 +23,7 @@
     <div class="grid-container">
       <header class="header-restaurant">
         <a href="index.html" id="back-link">← Back to restaurants</a>
-        <h1 class="restaurant-name">Peinto Thai</h1>
+        <h1 class="restaurant-name">Yukon Pizza</h1>
         <a href="#" id="cart-link">
           <i class="fa-solid fa-cart-shopping"></i
           ><span id="cart-count" class="cart-badge">0</span>
@@ -31,20 +31,44 @@
       </header>
 
       <main>
+        <div class="list-header">
+          <section class="list-section">
+            <h2 class="list-title">Wing Flavors</h2>
+            <div class="list-columns">
+              <ul class="list">
+                <li>Buffalo</li>
+                <li>KC BBQ</li>
+                <li>Lemon Pepper</li>
+                <li>Sweet Chili</li>
+              </ul>
+            </div>
+          </section>
+          <section class="list-section">
+            <h2 class="list-title">Wing Sauces</h2>
+            <div class="list-columns">
+              <ul class="list">
+                <li>Buffalo</li>
+                <li>Ranch</li>
+                <li>Sweet Chili</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
         <div id="menu-items" class="menu-grid">
           <div class="menu-item">
             <img
-              src="https://pickyeaterblog.com/wp-content/uploads/2023/11/tofu-fried-rice.jpg"
-              alt="House Fried Rice"
+              src="https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC9pbWFnZS1wcm9jL3Byb2Nlc3NlZF9pbWFnZXMvZjhkZDk0ODFkYTRjYzFiMTg5NzJhNTUwZTRkZjFiZWIvYzY3ZmM2NWU5YjRlMTZhNTUzZWI3NTc0ZmJhMDkwZjEuanBlZw=="
+              alt="Caesar Salad"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Fried Rice (House)</h3>
+                <h3 class="menu-item-name">Caesar Salad</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
               <p class="menu-item-description">
-                Tofu & veggies w/ white or brown rice.
+                Kale, Caesar dressing, croutons, & parmesan.
               </p>
             </div>
             <button class="order-btn">Add to Cart</button>
@@ -52,17 +76,33 @@
 
           <div class="menu-item">
             <img
-              src="https://woonheng.com/wp-content/uploads/2021/04/Vegan-Thai-Basil-Fried-Rice-2-819x1024.jpg"
-              alt="Spicy Basil Fried Rice"
+              src="https://californiaranchmarket.com/cdn/shop/products/001540_d5f9f0d1-cd3d-486f-9355-c57d28c192e4.jpg?v=1639158823"
+              alt="Diet Coke"
+              class="menu-item-image menu-item-no-zoom"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Diet Coke</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Can of Diet Coke.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC9pbWFnZS1wcm9jL3Byb2Nlc3NlZF9pbWFnZXMvMDIzOTlkZDFkMDIwOTRiZjdmYjVjNzJkNTA0NzZmNTcvMGZiMzc2ZDFkYTU2YzA1NjQ0NDUwMDYyZDI1YzVjODQuanBlZw=="
+              alt="Fries"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Fried Rice (Spicy Basil)</h3>
+                <h3 class="menu-item-name">Fries</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
               <p class="menu-item-description">
-                Tofu & veggies w/ white or brown rice.
+                Regular, garlic parm, or grizzly fries.
               </p>
             </div>
             <button class="order-btn">Add to Cart</button>
@@ -70,33 +110,17 @@
 
           <div class="menu-item">
             <img
-              src="https://www.noracooks.com/wp-content/uploads/2023/01/30MinuteVeganPadThai-5-2.jpg"
-              alt="Pad Thai"
+              src="https://tb-static.uber.com/prod/image-proc/processed_images/aedb41559bb7419cd73ffab1c613f0b5/c67fc65e9b4e16a553eb7574fba090f1.jpeg"
+              alt="Meatless Lovers"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Pad Thai</h3>
-                <p class="menu-item-price">1 boop</p>
-              </div>
-              <p class="menu-item-description">Tofu & veggies (no egg).</p>
-            </div>
-            <button class="order-btn">Add to Cart</button>
-          </div>
-
-          <div class="menu-item">
-            <img
-              src="https://pipingpotcurry.com/wp-content/uploads/2023/03/Panang-curry-tofu.jpg"
-              alt="Panang Tofu"
-              class="menu-item-image"
-            />
-            <div class="menu-text">
-              <div class="menu-text-row1">
-                <h3 class="menu-item-name">Panang Tofu</h3>
+                <h3 class="menu-item-name">Meatless Lovers</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
               <p class="menu-item-description">
-                Choice of spice (mild, medium, hot).
+                Pepperoni, sausage, onion, & garlic.
               </p>
             </div>
             <button class="order-btn">Add to Cart</button>
@@ -104,32 +128,36 @@
 
           <div class="menu-item">
             <img
-              src="https://afoodloverskitchen.com/wp-content/uploads/2021/04/thai-spring-rolls-feat-480x270.jpg"
-              alt="Spring Rolls"
+              src="https://tb-static.uber.com/prod/image-proc/processed_images/1023439346b5d0f5a010bdfcd37386cc/c67fc65e9b4e16a553eb7574fba090f1.jpeg"
+              alt="Pepps in Vegas"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Spring Roll</h3>
+                <h3 class="menu-item-name">Pepps in Vegas</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">5 veggie spring rolls.</p>
+              <p class="menu-item-description">
+                Extra pepperoni, parmesan, oregano, & basil.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
 
           <div class="menu-item">
             <img
-              src="https://ianbenites.com/wp-content/uploads/2020/08/LRM_20200811_204813.jpg"
-              alt="Sticky Rice"
+              src="https://tb-static.uber.com/prod/image-proc/processed_images/2f5ecff12dd2420cfdbbe7cad71d9efe/c67fc65e9b4e16a553eb7574fba090f1.jpeg"
+              alt="Wing & Fry"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Sticky Rice</h3>
+                <h3 class="menu-item-name">Wing & Fry</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Side of sticky rice.</p>
+              <p class="menu-item-description">
+                Wings (w/ choice of flavor & sauce) & fries.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>

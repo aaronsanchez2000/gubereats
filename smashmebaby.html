@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Peinto Thai Menu</title>
+    <title>Smash Me Baby Menu</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
@@ -23,7 +23,7 @@
     <div class="grid-container">
       <header class="header-restaurant">
         <a href="index.html" id="back-link">← Back to restaurants</a>
-        <h1 class="restaurant-name">Peinto Thai</h1>
+        <h1 class="restaurant-name">Smash Me Baby</h1>
         <a href="#" id="cart-link">
           <i class="fa-solid fa-cart-shopping"></i
           ><span id="cart-count" class="cart-badge">0</span>
@@ -31,20 +31,49 @@
       </header>
 
       <main>
+        <div hidden class="list-container">
+          <div class="list-header">
+            <!-- to add more columns, copy section class="list-section" -->
+            <section class="list-section">
+              <h2 class="list-title">List 1</h2>
+              <div class="list-columns">
+                <!-- to add another column, copy ul class=list -->
+                <ul class="list">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                </ul>
+              </div>
+            </section>
+            <section class="list-section">
+              <h2 class="list-title">List 2</h2>
+              <div class="list-columns">
+                <ul class="list">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+
         <div id="menu-items" class="menu-grid">
           <div class="menu-item">
             <img
-              src="https://pickyeaterblog.com/wp-content/uploads/2023/11/tofu-fried-rice.jpg"
-              alt="House Fried Rice"
+              src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=600,format=auto,quality=50/https://doordash-static.s3.amazonaws.com/media/photosV2/6a065ed3-55d7-4e63-a0fe-5225eea44361-retina-large.jpg"
+              alt="Chikky Nuggies"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Fried Rice (House)</h3>
+                <h3 class="menu-item-name">Chikky Nuggies</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
               <p class="menu-item-description">
-                Tofu & veggies w/ white or brown rice.
+                6, 15, or 40 nuggies w/ sauce.
               </p>
             </div>
             <button class="order-btn">Add to Cart</button>
@@ -52,17 +81,17 @@
 
           <div class="menu-item">
             <img
-              src="https://woonheng.com/wp-content/uploads/2021/04/Vegan-Thai-Basil-Fried-Rice-2-819x1024.jpg"
-              alt="Spicy Basil Fried Rice"
+              src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=600,format=auto,quality=50/https://doordash-static.s3.amazonaws.com/media/photosV2/94d7db73-f935-419d-8dc9-bc57e5bdd4c7-retina-large.png"
+              alt="Double Borg"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Fried Rice (Spicy Basil)</h3>
+                <h3 class="menu-item-name">Double Borg</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
               <p class="menu-item-description">
-                Tofu & veggies w/ white or brown rice.
+                2 patties w/ cheese, onion, & pickle.
               </p>
             </div>
             <button class="order-btn">Add to Cart</button>
@@ -70,33 +99,33 @@
 
           <div class="menu-item">
             <img
-              src="https://www.noracooks.com/wp-content/uploads/2023/01/30MinuteVeganPadThai-5-2.jpg"
-              alt="Pad Thai"
+              src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=600,format=auto,quality=50/https://doordash-static.s3.amazonaws.com/media/photosV2/53f86314-4d20-413a-ac17-08f3293b3e21-retina-large.png"
+              alt="Fries"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Pad Thai</h3>
+                <h3 class="menu-item-name">Fries</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Tofu & veggies (no egg).</p>
+              <p class="menu-item-description">Side of fries.</p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
 
           <div class="menu-item">
             <img
-              src="https://pipingpotcurry.com/wp-content/uploads/2023/03/Panang-curry-tofu.jpg"
-              alt="Panang Tofu"
+              src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=600,format=auto,quality=50/https://doordash-static.s3.amazonaws.com/media/photosV2/965fe107-d062-4936-b907-d628bbdac61f-retina-large.png"
+              alt="Mushroom Swiss Borg"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Panang Tofu</h3>
+                <h3 class="menu-item-name">Mushroom Swiss Borg</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
               <p class="menu-item-description">
-                Choice of spice (mild, medium, hot).
+                2 patties w/ mushroom, swiss, onion, & pickle.
               </p>
             </div>
             <button class="order-btn">Add to Cart</button>
@@ -104,32 +133,36 @@
 
           <div class="menu-item">
             <img
-              src="https://afoodloverskitchen.com/wp-content/uploads/2021/04/thai-spring-rolls-feat-480x270.jpg"
-              alt="Spring Rolls"
+              src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=600,format=auto,quality=50/https://doordash-static.s3.amazonaws.com/media/photosV2/ea899cca-1fb5-4e91-b1e8-0298e8c84fbd-retina-large.png"
+              alt="Patty Melt"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Spring Roll</h3>
+                <h3 class="menu-item-name">Patty Melt</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">5 veggie spring rolls.</p>
+              <p class="menu-item-description">
+                1 patty w/ Swiss, onion, & pickle on sourdough.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
 
           <div class="menu-item">
             <img
-              src="https://ianbenites.com/wp-content/uploads/2020/08/LRM_20200811_204813.jpg"
-              alt="Sticky Rice"
+              src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=600,format=auto,quality=50/https://doordash-static.s3.amazonaws.com/media/photosV2/307b928c-1ca5-48ae-a79f-1c2b4277c47b-retina-large.png"
+              alt="Single Borg"
               class="menu-item-image"
             />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Sticky Rice</h3>
+                <h3 class="menu-item-name">Single Borg</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Side of sticky rice.</p>
+              <p class="menu-item-description">
+                1 patty w/ cheese, onion, & pickle.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
