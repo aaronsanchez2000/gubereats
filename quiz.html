@@ -3,21 +3,221 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guber Eats</title>
+    <title>Restaurant Quiz</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   </head>
-  <body class="zoom-container">
+  <body>
     <div class="grid-container">
-      <header class="header-quiz">
+      <header class="header-restaurant">
         <a href="index.html" id="back-link">← Back to restaurants</a>
+        <h1 class="restaurant-name">Find Our Noms!</h1>
       </header>
 
-      <main id="quiz-homepage"></main>
+      <main>
+        <div class="quiz-container">
+          <form id="quiz-form">
+            <div class="quiz-card">
+              <h2 class="quiz-card-header">What should we get?</h2>
+
+              <!-- sliders -->
+
+              <!-- TODO: change slider to 1-10 & update js code -->
+              <div class="question">
+                <label for="spicy" class="quiz-question"
+                  >How much are you craving spicy food?</label
+                >
+                <input
+                  type="range"
+                  id="spicy"
+                  name="spicy"
+                  min="0"
+                  max="10"
+                  step="0.01"
+                  value="5"
+                />
+              </div>
+
+              <div class="question">
+                <label for="sweet" class="quiz-question"
+                  >How much are you craving something sweet?</label
+                >
+                <input
+                  type="range"
+                  id="sweet"
+                  name="sweet"
+                  min="0"
+                  max="10"
+                  step="0.01"
+                  value="5"
+                />
+              </div>
+
+              <div class="question">
+                <label for="savory" class="quiz-question"
+                  >How much are you craving something savory?</label
+                >
+                <input
+                  type="range"
+                  id="savory"
+                  name="savory"
+                  min="0"
+                  max="10"
+                  step="0.01"
+                  value="5"
+                />
+              </div>
+
+              <!-- radio -->
+              <div class="question">
+                <p class="quiz-question">
+                  Do you want something handheld or with utensils?
+                </p>
+                <label
+                  ><input
+                    type="radio"
+                    name="handheld"
+                    value="handheld"
+                    required
+                  />
+                  Handheld</label
+                >
+                <label
+                  ><input type="radio" name="handheld" value="utensils" />
+                  Utensils</label
+                >
+              </div>
+
+              <div class="question">
+                <p class="quiz-question">
+                  Do you want a sammich format or something else?
+                </p>
+                <label
+                  ><input
+                    type="radio"
+                    name="sammich-form"
+                    value="sammich-form"
+                    required
+                  />
+                  Sammich/Borg</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="sammich-form"
+                    value="not-sammich"
+                  />
+                  Something Else</label
+                >
+              </div>
+
+              <div class="question">
+                <p class="quiz-question">
+                  Do you want something classic or more unique?
+                </p>
+                <label
+                  ><input type="radio" name="style" value="classic" required />
+                  Classic</label
+                >
+                <label
+                  ><input type="radio" name="style" value="unique" />
+                  Unique</label
+                >
+              </div>
+
+              <!-- drinkie question -->
+              <div class="question">
+                <p class="quiz-question">Do you plan to get a drinkie?</p>
+                <label
+                  ><input type="radio" name="drinkie" value="yes" required />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" name="drinkie" value="no" /> No</label
+                >
+              </div>
+
+              <!-- ranking -->
+              <div class="question">
+                <p class="quiz-question">
+                  Rank these from most craving → least craving
+                </p>
+                <ul id="sortable">
+                  <li draggable="true">Borg</li>
+                  <li draggable="true">Chikky</li>
+                  <li draggable="true">Tacos</li>
+                  <li draggable="true">Pizza</li>
+                  <li draggable="true">Asian</li>
+                  <li draggable="true">Sammich</li>
+                  <li draggable="true">Sweets</li>
+                  <li draggable="true">Drinkies</li>
+                </ul>
+              </div>
+
+              <!-- preferred choice -->
+              <div class="question">
+                <label for="preferred-choice" class="quiz-question"
+                  >Do you have a preferred choice?</label
+                >
+                <select id="preferred-choice" name="preferred-choice">
+                  <option
+                    value=""
+                    disabled
+                    selected
+                    hidden
+                    id="preferred-choice-default"
+                  >
+                    Choose one
+                  </option>
+                  <option value="Bronze Cafe">Bronze Cafe</option>
+                  <option value="Burger King">Borg</option>
+                  <option value="Chef Kenny's">Chef Kenny's</option>
+                  <option value="Cinnaholic">Cinnaholic</option>
+                  <option value="Garden Grill">Garden Grill</option>
+                  <option value="Ike's">Ike's</option>
+                  <option value="Peinto Thai">Peinto Thai</option>
+                  <option value="Plant Power">Plant Power</option>
+                  <option value="Prone to Plants">Prone to Plants</option>
+                  <option value="Shinjuku Ramen">Shinjuku</option>
+                  <option value="Smash Me Baby">Smash Me Baby</option>
+                  <option value="Sonic">Sonic</option>
+                  <option value="Subway">Subway</option>
+                  <option value="Taco Bell">Baco</option>
+                  <option value="Tacotarian">Tacotarian</option>
+                  <option value="Yukon Pizza">Yukon Pizza</option>
+                </select>
+
+                <button type="submit" class="order-btn">Submit</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- results -->
+          <div id="result" class="hidden">
+            <h2 class="quiz-result-main">Your Match</h2>
+
+            <a id="main-restaurant-link" href="#" class="quiz-result-card">
+              <h3 id="main-restaurant-name"></h3>
+              <img id="main-restaurant-img" src="#" alt="" />
+            </a>
+
+            <h3 class="quiz-result-backup">Backup Option</h3>
+
+            <a id="backup-restaurant-link" href="#" class="quiz-result-card">
+              <h3 id="backup-restaurant-name"></h3>
+              <img id="backup-restaurant-img" src="#" alt="" />
+            </a>
+          </div>
+        </div>
+      </main>
 
       <footer>
         <h2 id="footer-title">Guber<span id="footer-title-bold">Eats</span></h2>
@@ -25,6 +225,8 @@
       </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="quiz.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
