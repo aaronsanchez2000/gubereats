@@ -4,96 +4,112 @@ const restaurants = [
     img: "restaurant-logos/bronzecafe-logo.jpg",
     link: "bronzecafe.html",
     tags: ["sammich", "drinkies", "unique", "handheld"],
+    flavor: ["savory", "sweet"],
   },
   {
     name: "Burger King",
     img: "restaurant-logos/burgerking-logo.png",
     link: "burgerking.html",
     tags: ["borg", "classic", "handheld"],
+    flavor: ["savory"],
   },
   {
     name: "Chef Kenny's",
     img: "restaurant-logos/chefkennys-logo.webp",
     link: "chefkennys.html",
     tags: ["asian", "chikky", "unique", "utensils"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Cinnaholic",
     img: "restaurant-logos/cinnaholic-logo.webp",
     link: "cinnaholic.html",
     tags: ["sweets", "unique", "utensils"],
+    flavor: ["sweet"],
   },
   {
     name: "Garden Grill",
     img: "restaurant-logos/gardengrill-logo2.jpg",
     link: "gardengrill.html",
     tags: ["savory", "chikky", "unique", "utensils"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Ike's",
     img: "restaurant-logos/ikes-logo.svg",
     link: "ikes.html",
     tags: ["sammich", "unique", "handheld"],
+    flavor: ["savory"],
   },
   {
     name: "Peinto Thai",
     img: "restaurant-logos/peinto-logo3.png",
     link: "peinto.html",
     tags: ["asian", "spicy", "utensils"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Plant Power",
     img: "restaurant-logos/plantpower-logo.avif",
     link: "plantpower.html",
-    tags: ["borg", "chikky", "unique", "handheld"],
+    tags: ["borg", "chikky", "unique"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Prone to Plants",
     img: "restaurant-logos/pronetoplants-logo2.png",
     link: "pronetoplants.html",
     tags: ["savory", "chikky", "unique", "utensils"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Shinjuku Ramen",
     img: "restaurant-logos/shinjuku-logo.webp",
     link: "shinjuku.html",
     tags: ["asian", "spicy", "utensils"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Smash Me Baby",
     img: "restaurant-logos/smashmebaby-logo.webp",
     link: "smashmebaby.html",
     tags: ["borg", "unique", "handheld"],
+    flavor: ["savory"],
   },
   {
     name: "Sonic",
     img: "restaurant-logos/sonic-logo.png",
     link: "sonic.html",
     tags: ["drinkies", "classic", "handheld"],
+    flavor: ["savory", "sweet"],
   },
   {
     name: "Subway",
     img: "restaurant-logos/subway-logo.png",
     link: "subway.html",
     tags: ["sammich", "classic", "handheld"],
+    flavor: ["savory"],
   },
   {
     name: "Taco Bell",
     img: "restaurant-logos/tacobell-logo.png",
     link: "tacobell.html",
     tags: ["tacos", "classic", "handheld"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Tacotarian",
     img: "restaurant-logos/tacotarian-logo2.jpg",
     link: "tacotarian.html",
-    tags: ["tacos", "unique", "handheld"],
+    tags: ["tacos", "unique"],
+    flavor: ["savory", "spicy"],
   },
   {
     name: "Yukon Pizza",
     img: "restaurant-logos/yukon-logo.png",
     link: "yukonpizza.html",
     tags: ["pizza", "unique", "utensils"],
+    flavor: ["savory"],
   },
 ];
 
@@ -177,8 +193,14 @@ function getDragAfterElement(container, y) {
   ).element;
 }
 
-const weightedScore = (val, weights) =>
-  weights[Math.min(Math.floor((val - 1) / 2), weights.length - 1)] || 0;
+const flavorScore = (val) => {
+  if (val <= 2) return -4;
+  if (val > 3 && val < 5) return -2;
+  if (val === 5) return 0;
+  if (val > 5 && val < 8) return 2;
+  if (val >= 8) return 4;
+  return 0;
+};
 
 // snap sliders to center
 document.querySelectorAll('input[type="range"]').forEach((slider) => {
@@ -200,68 +222,142 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
   const spicy = getVal("spicy"),
     sweet = getVal("sweet"),
     savory = getVal("savory"),
+    salad = getChoice("salad"),
     drinkie = getChoice("drinkie"),
     handheld = getChoice("handheld"),
     style = getChoice("style"),
-    sammichForm = getChoice("sammich-form");
+    sammichForm = getChoice("sammich-form"),
+    preferred = document.getElementById("preferred-choice").value;
 
   const ranked = [...sortable.children]
     .filter((li) => li.tagName === "LI")
     .map((li) => li.textContent.split(" ")[0].toLowerCase());
+
   const scores = Object.fromEntries(restaurants.map((r) => [r.name, 0]));
+  console.log("Initial scores:");
+  console.table(scores);
 
   // flavor points
   const scoringRules = [
-    {
-      targets: ["Cinnaholic", "Bronze Cafe"],
-      score: weightedScore(sweet, [-4, -2, 0, 2, 4]),
-    },
-    {
-      targets: ["Peinto Thai", "Shinjuku Ramen", "Tacotarian", "Taco Bell"],
-      score: weightedScore(spicy, [-4, -2, 0, 2, 4]),
-    },
-    {
-      targets: ["Garden Grill", "Prone to Plants"],
-      score: weightedScore(savory, [-4, -2, 0, 2, 4]),
-    },
-  ];
-  scoringRules.forEach((rule) =>
-    rule.targets.forEach((r) => (scores[r] += rule.score))
-  );
+    { type: "sweet", value: sweet },
+    { type: "spicy", value: spicy },
+    { type: "savory", value: savory },
+  ].map(({ type, value }) => ({
+    type,
+    targets: restaurants
+      .filter((r) => r.flavor.includes(type))
+      .map((r) => r.name),
+    score: flavorScore(value),
+  }));
+
+  console.group("Flavor Points");
+  scoringRules.forEach((rule) => {
+    rule.targets.forEach((r) => {
+      scores[r] += rule.score;
+      console.log(
+        `${r} ${rule.score >= 0 ? "+" : ""}${rule.score} (flavor: ${
+          rule.targets.includes(r) ? rule.type : ""
+        }) -> ${scores[r]}`
+      );
+    });
+  });
+  console.groupEnd();
+
+  // salad
+  console.group("Salad");
+  if (salad === "yes") {
+    ["Bronze Cafe", "Garden Grill", "Plant Power", "Yukon Pizza"].forEach(
+      (r) => {
+        scores[r] += 2;
+        console.log(`${r} +2 (salad) -> ${scores[r]}`);
+      }
+    );
+  } else {
+    ["Bronze Cafe"].forEach((r) => {
+      scores[r] -= 2;
+      console.log(`${r} -2 (no salad) -> ${scores[r]}`);
+    });
+  }
+  console.groupEnd();
 
   // drinks
-  drinkie === "yes"
-    ? ["Sonic", "Bronze Cafe", "Plant Power", "Taco Bell"].forEach(
-        (r) => (scores[r] += 2)
-      )
-    : ["Bronze Cafe", "Sonic"].forEach((r) => (scores[r] -= 4));
+  console.group("Drinks");
+  if (drinkie === "yes") {
+    ["Sonic", "Bronze Cafe", "Plant Power", "Taco Bell"].forEach((r) => {
+      scores[r] += 2;
+      console.log(`${r} +2 (drinks) -> ${scores[r]}`);
+    });
+  } else {
+    ["Bronze Cafe", "Sonic"].forEach((r) => {
+      scores[r] -= 4;
+      console.log(`${r} -4 (no drinks) -> ${scores[r]}`);
+    });
+  }
+  console.groupEnd();
 
   // sammich bonus
-  ["Bronze Cafe", "Ike's", "Smash Me Baby", "Subway"].forEach(
-    (r) => (scores[r] += sammichForm === "yes" ? 3 : -3)
-  );
+  console.group("Sammich Bonus");
+  ["Bronze Cafe", "Ike's", "Smash Me Baby", "Subway"].forEach((r) => {
+    const delta = sammichForm === "yes" ? 3 : -3;
+    scores[r] += delta;
+    console.log(
+      `${r} ${delta >= 0 ? "+" : ""}${delta} (sammich) -> ${scores[r]}`
+    );
+  });
+  console.groupEnd();
 
-  // handheld/utensils
-  restaurants
-    .filter((r) =>
-      r.tags.includes(handheld === "handheld" ? "handheld" : "utensils")
-    )
-    .forEach((r) => (scores[r.name] += 2));
+  // handheld vs. utensils
+  console.group("Handheld / Utensils");
+  const selectedTag = handheld === "handheld" ? "handheld" : "utensils";
+  const oppositeTag = selectedTag === "handheld" ? "utensils" : "handheld";
+
+  restaurants.forEach((r) => {
+    if (r.tags.includes(selectedTag)) {
+      scores[r.name] += 2;
+      console.log(`${r.name} +2 (${selectedTag}) -> ${scores[r.name]}`);
+    }
+    if (r.tags.includes(oppositeTag)) {
+      scores[r.name] -= 2;
+      console.log(`${r.name} -2 (${oppositeTag}) -> ${scores[r.name]}`);
+    }
+  });
+  console.groupEnd();
+
+  // style
+  console.group("Classic vs. Unique");
   restaurants
     .filter((r) => r.tags.includes(style))
-    .forEach((r) => (scores[r.name] += 2));
+    .forEach((r) => {
+      scores[r.name] += 2;
+      console.log(`${r.name} +2 (style: ${style}) -> ${scores[r.name]}`);
+    });
+  console.groupEnd();
 
   // rank boosts
-  const rankBoosts = [4, 3, 2, 1, 0, 0];
+  console.group("Rank Boosts");
+  const rankBoosts = [4, 3, 2, 1, 0, -1];
   ranked.forEach((category, i) => {
     if (!rankBoosts[i]) return;
     restaurants
       .filter((r) => r.tags.includes(category))
-      .forEach((r) => (scores[r.name] += rankBoosts[i]));
+      .forEach((r) => {
+        scores[r.name] += rankBoosts[i];
+        console.log(
+          `${r.name} +${rankBoosts[i]} (rank: ${category}) -> ${scores[r.name]}`
+        );
+      });
   });
+  console.groupEnd();
 
-  const preferred = document.getElementById("preferred-choice").value;
-  if (preferred) scores[preferred] += 4;
+  // preferred choice
+  if (preferred) {
+    scores[preferred] += 4;
+    console.log(`Preferred choice: ${preferred} +4 -> ${scores[preferred]}`);
+  }
+
+  // final scores
+  console.log("Final Scores:");
+  console.table(scores);
 
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   const [mainRestaurant, backupRestaurant] = sorted
