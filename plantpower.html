@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Power Menu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="header-restaurant">
+        <a href="index.html" id="back-link">← Back to restaurants</a>
+        <h1 class="restaurant-name">Plant Power</h1>
+        <a href="#" id="cart-link">
+          <i class="fa-solid fa-cart-shopping"></i
+          ><span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </header>
+
+      <main>
+        <div class="list-container">
+          <div class="list-header">
+            <!-- to add more columns, copy section class="list-section" -->
+            <section class="list-section">
+              <h2 class="list-title">Milkshake Flavors</h2>
+              <div class="list-columns">
+                <!-- to add another column, copy ul class=list -->
+                <ul class="list">
+                  <li>Coffee</li>
+                  <li>Cookie Butter</li>
+                  <li>Cookies & Cream</li>
+                  <li>Chocolate</li>
+                  <li>Horchata</li>
+                </ul>
+                <ul class="list">
+                  <li>Peanut Butter</li>
+                  <li>Pumpkin Pie</li>
+                  <li>Strawberry</li>
+                  <li>Vanilla</li>
+                </ul>
+              </div>
+            </section>
+            <section class="list-section">
+              <h2 class="list-title">Sauces</h2>
+              <div class="list-columns">
+                <ul class="list">
+                  <li>BBQ</li>
+                  <li>Big Zac</li>
+                  <li>Buffalo</li>
+                  <li>Chipotle</li>
+                  <li>Honey Mustard</li>
+                </ul>
+                <ul class="list">
+                  <li>Ketchup</li>
+                  <li>Mayo</li>
+                  <li>Mustard</li>
+                  <li>Ranch</li>
+                  <li>Secret Sauce</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div id="menu-items" class="menu-grid">
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/de2ccb7f-6a8f-458c-b162-fa2da5a674c1/18_sausage_egg_cheese_croissant_5861.jpg?format=2500w"
+              alt="Brekky Croissant"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Brekky Croissant</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Bacon or sausage w/ egg, cheese & spinch.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/1680283708598-HLPIZ6E6IANG9KVI2VWL/14_bacon_egg_cheese_muffin_5817.jpg?format=2500w"
+              alt="Brekky Muffin"
+              class="menu-item-image pp-muffin-img"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Brekky Muffin</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Bacon or sausage w/ egg, cheese & spinch.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/330c8113-b4fd-4d1b-ac5b-98904f09ea71/CaesarSalad-web.jpg?format=2500w"
+              alt="Chikky Caesar Salad"
+              class="menu-item-image pp-caesarsalad-img"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Chikky Caesar Salad</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Choice of crispy or grilled chikky.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/c89d1b39-237e-4898-b6cc-184f97fd49e5/CaesarWrap-web.jpg?format=2500w"
+              alt="Chikky Caesar Wrap"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Chikky Caesar Wrap</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Choice of crispy or grilled chikky.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/1680283708747-XARNPWP8FFVATQO35YRH/09_iconic_fries_8602.png?format=2500w"
+              alt="Fries"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Fries</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Side of regular or iconic fries (no onion).
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/1680283708786-Q3I1XNU7FLLD142FIXGB/Shake-Trio.png?format=2500w"
+              alt="Milkshake"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Milkshake</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Choice of flavor (can be combined).
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/1680283708729-GN3VT1OYJY596C526WT4/33_12_piece_nuggets_stacked.jpg?format=1500w"
+              alt="Nuggies"
+              class="menu-item-image pp-nuggie-img"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Nuggies</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                6 or 12 nuggies w/ choice of sauce.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://media.appfront.app/businesses/5f0c777d05e0400e1885bccb/menu-items/8a9037dcf195da8919fc606194838a2d/600-_-contain_v4"
+              alt="Patty Melt"
+              class="menu-item-image pp-pattymelt-img"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Patty Melt</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                2 patties, cheese, onion, & sauce on toast.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/6427182aca333358f43cc43f/1680283708734-GZB9STZQCX05IQH6IWFR/30_large_chicken_tenders_6059.jpg?format=2500w"
+              alt="Tendies"
+              class="menu-item-image pp-tendie-img"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Tendies</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                3 or 5 tendies w/ choice of sauce.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <h2 id="footer-title">Guber<span id="footer-title-bold">Eats</span></h2>
+        <p id="copyright">© 2025 Bab Incorporated. All rights reserved.</p>
+      </footer>
+    </div>
+    <!-- sidebar -->
+    <div id="cart-sidebar">
+      <button id="close-cart">&times;</button>
+      <h2>Your Cart</h2>
+      <div class="cart-header">
+        <h3>Items</h3>
+        <h3>Price</h3>
+      </div>
+      <div class="cart-content">
+        <!-- content filled with js -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span class="cart-label">Total:</span>
+          <span class="cart-value cart-total-amount"></span>
+        </div>
+        <textarea
+          id="order-notes"
+          placeholder="Which meat(s)? Any sauce/sides?"
+        ></textarea>
+        <button id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+    <!-- overlay (dim background when cart is open) -->
+    <div id="cart-overlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -313,12 +313,12 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
 
   restaurants.forEach((r) => {
     if (r.tags.includes(selectedTag)) {
-      scores[r.name] += 2;
-      console.log(`${r.name} +2 (${selectedTag}) -> ${scores[r.name]}`);
+      scores[r.name] += 4;
+      console.log(`${r.name} +4 (${selectedTag}) -> ${scores[r.name]}`);
     }
     if (r.tags.includes(oppositeTag)) {
-      scores[r.name] -= 2;
-      console.log(`${r.name} -2 (${oppositeTag}) -> ${scores[r.name]}`);
+      scores[r.name] -= 4;
+      console.log(`${r.name} -4 (${oppositeTag}) -> ${scores[r.name]}`);
     }
   });
   console.groupEnd();

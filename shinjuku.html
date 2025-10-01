@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shinjuku Menu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="header-restaurant">
+        <a href="index.html" id="back-link">← Back to restaurants</a>
+        <h1 class="restaurant-name">Shinjuku</h1>
+        <a href="#" id="cart-link">
+          <i class="fa-solid fa-cart-shopping"></i
+          ><span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </header>
+
+      <main>
+        <div class="list-container">
+          <div class="list-header">
+            <h2 class="disclaimer">
+              All ramens come w/ kale noodles, tofu, broccoli, green onion, &
+              bamboo shoots.
+            </h2>
+          </div>
+        </div>
+
+        <div id="menu-items" class="menu-grid">
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2021/08/S__17949181.jpeg"
+              alt="Creamy Ramen"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Creamy Ramen</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Creamy broth w/ toppings.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2022/05/5A10123C-D5D7-42DC-AA01-C0FE59A010EC-1024x1024.jpeg"
+              alt="Fried Rice"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Fried Rice</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Rice w/ green onion & mixed veggies.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2021/08/S__17949201-1024x1024.jpeg"
+              alt="Fried Tofu"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Fried Tofu</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">4 fried tofus.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2022/05/C92BE241-43F1-40D3-B3E8-8B20CECBAD3D-e1652846235115-1024x1024.jpeg"
+              alt="Hirata Bun"
+              class="menu-item-image shin-hirata-img"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Hirata Bun</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Patty w/ cabbage, green onion, & sauce.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2022/05/32BAA9F2-8B10-48EF-9E9C-43CAD6CFC6FF-rotated-e1652848459175-2048x2048.jpeg"
+              alt="Miso Ramen"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Miso Ramen</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Miso broth w/ toppings.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2021/08/S__17949254-e1627974722949.jpeg"
+              alt="Spicy Creamy Ramen"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Spicy Creamy Ramen</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">
+                Spicy creamy broth w/ toppings.
+              </p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://shinjukuramen.com/wp-content/uploads/2021/08/1-e1627975490426.jpeg"
+              alt="Spicy Miso Ramen"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Spicy Miso Ramen</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Spicy miso broth w/ toppings.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://www.fervalle.com/wp-content/uploads/2022/07/Green-Broccoli-Transparent-Images-PNG.png"
+              alt="Add-On: Broccoli"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Add-On: Broccoli</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Extra broccoli in the ramen.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img
+              src="https://www.mashed.com/img/gallery/can-you-freeze-tofu/can-you-freeze-tofu-1614098805.jpg"
+              alt="Add-On: Tofu<"
+              class="menu-item-image"
+            />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Add-On: Tofu</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Extra tofu in the ramen.</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <h2 id="footer-title">Guber<span id="footer-title-bold">Eats</span></h2>
+        <p id="copyright">© 2025 Bab Incorporated. All rights reserved.</p>
+      </footer>
+    </div>
+    <!-- sidebar -->
+    <div id="cart-sidebar">
+      <button id="close-cart">&times;</button>
+      <h2>Your Cart</h2>
+      <div class="cart-header">
+        <h3>Items</h3>
+        <h3>Price</h3>
+      </div>
+      <div class="cart-content">
+        <!-- content filled with js -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span class="cart-label">Total:</span>
+          <span class="cart-value cart-total-amount"></span>
+        </div>
+        <textarea
+          id="order-notes"
+          placeholder="Which meat(s)? Any sauce/sides?"
+        ></textarea>
+        <button id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+    <!-- overlay (dim background when cart is open) -->
+    <div id="cart-overlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

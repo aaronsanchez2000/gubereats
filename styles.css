@@ -133,6 +133,12 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+.disclaimer {
+  font-size: 1rem;
+  color: var(--color-main);
+  text-align: center;
+}
+
 #restaurants-title {
   font-size: 4rem;
   color: var(--color-secondary);
@@ -271,6 +277,7 @@ main {
   background-color: var(--color-secondary);
   color: #fff;
   cursor: pointer;
+  font-family: var(--font-base);
   font-weight: 600;
   height: 20%;
   max-height: 3rem;
@@ -492,6 +499,10 @@ main {
   background: #fff4e5;
 }
 
+.needs-items {
+  background: #e5f6ff;
+}
+
 .list-header {
   display: flex;
   flex-direction: row;
@@ -521,10 +532,28 @@ main {
   padding: 0;
 }
 
+.list li {
+  background: #fff;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+}
+
+.red-topping {
+  background-color: #ffdddd !important;
+}
+
 .list-title {
   color: var(--color-secondary);
   font-size: 1.5rem;
   text-decoration: underline;
+}
+
+.list-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
 
 .quiz-card {
@@ -772,6 +801,10 @@ select {
   .menu-item-image {
     aspect-ratio: 3 / 4;
   }
+  .list-columns {
+    flex-direction: column;
+    gap: 00;
+  }
 }
 
 @media (max-width: 768px) {
@@ -915,6 +948,7 @@ select {
   .list-title {
     font-size: 1rem;
   }
+
   #preferred-choice option {
     font-size: 0.8rem !important;
   }
@@ -1003,4 +1037,29 @@ select {
     font-size: 0.7rem;
     max-width: 80%;
   }
+}
+
+/* img adjustments */
+.pp-tendie-img {
+  object-position: 50% 55%;
+}
+
+.pp-nuggie-img {
+  object-position: 50% 70%;
+}
+
+.pp-caesarsalad-img {
+  object-position: 50% 55%;
+}
+
+.pp-muffin-img {
+  object-position: 50% 55%;
+}
+
+.pp-pattymelt-img {
+  object-position: 50% 55%;
+}
+
+.shin-hirata-img {
+  object-position: 50% 60%;
 }

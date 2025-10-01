@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subway Menu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="header-restaurant">
+        <a href="index.html" id="back-link">← Back to restaurants</a>
+        <h1 class="restaurant-name">Sabubub</h1>
+        <a href="#" id="cart-link">
+          <i class="fa-solid fa-cart-shopping"></i
+          ><span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </header>
+
+      <main>
+        <div class="list-container">
+          <div class="list-header">
+            <h3 class="disclaimer">
+              Sammiches come w/ all non-red options by default. Can be added if
+              requested.<br /><br />Must choose white, wheat, or flatbread.
+            </h3>
+          </div>
+          <div class="list-header">
+            <!-- to add more columns, copy section class="list-section" -->
+            <section class="list-section">
+              <h2 class="list-title">Toppings</h2>
+              <div class="list-columns">
+                <!-- to add another column, copy ul class=list -->
+                <ul class="list">
+                  <li>Cado</li>
+                  <li>Lettuce</li>
+                  <li class="red-topping">Spinch</li>
+                  <li>Mato</li>
+                  <li>Cucumber</li>
+                  <li class="red-topping">Green Pepper</li>
+                  <li>Red Onion</li>
+                  <li>Pickle</li>
+                  <li>Olive</li>
+                </ul>
+              </div>
+            </section>
+            <section class="list-section">
+              <h2 class="list-title">Finishes</h2>
+              <div class="list-columns">
+                <ul class="list">
+                  <li>Mustard</li>
+                  <li class="red-topping">Oil</li>
+                  <li>Pepper</li>
+                  <li>Salt</li>
+                  <li class="red-topping">Sweet Onion</li>
+                  <li class="red-topping">Vinegar</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div id="menu-items" class="menu-grid">
+          <div class="menu-item">
+            <img src="src" alt="" class="menu-item-image" />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Item 1</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Description 1</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img src="src" alt="" class="menu-item-image" />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Item 2</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Description 2</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img src="src" alt="" class="menu-item-image" />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Item 3</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Description 3</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img src="src" alt="" class="menu-item-image" />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Item 4</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Description 4</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img src="src" alt="" class="menu-item-image" />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Item 5</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Description 5</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+
+          <div class="menu-item">
+            <img src="src" alt="" class="menu-item-image" />
+            <div class="menu-text">
+              <div class="menu-text-row1">
+                <h3 class="menu-item-name">Item 6</h3>
+                <p class="menu-item-price">1 boop</p>
+              </div>
+              <p class="menu-item-description">Description 6</p>
+            </div>
+            <button class="order-btn">Add to Cart</button>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <h2 id="footer-title">Guber<span id="footer-title-bold">Eats</span></h2>
+        <p id="copyright">© 2025 Bab Incorporated. All rights reserved.</p>
+      </footer>
+    </div>
+    <!-- sidebar -->
+    <div id="cart-sidebar">
+      <button id="close-cart">&times;</button>
+      <h2>Your Cart</h2>
+      <div class="cart-header">
+        <h3>Items</h3>
+        <h3>Price</h3>
+      </div>
+      <div class="cart-content">
+        <!-- content filled with js -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span class="cart-label">Total:</span>
+          <span class="cart-value cart-total-amount"></span>
+        </div>
+        <textarea
+          id="order-notes"
+          placeholder="Which meat(s)? Any sauce/sides?"
+        ></textarea>
+        <button id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+    <!-- overlay (dim background when cart is open) -->
+    <div id="cart-overlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      emailjs.init("oMh6h2Ca2O8LCjM0L");
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
