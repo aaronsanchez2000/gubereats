@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Garden Grill Menu</title>
+    <title>Prone to Plants Menu</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
@@ -23,7 +23,7 @@
     <div class="grid-container">
       <header class="header-restaurant">
         <a href="index.html" id="back-link">← Back to restaurants</a>
-        <h1 class="restaurant-name">Restaurant Name</h1>
+        <h1 class="restaurant-name">Prone to Plants</h1>
         <a href="#" id="cart-link">
           <i class="fa-solid fa-cart-shopping"></i
           ><span id="cart-count" class="cart-badge">0</span>
@@ -31,29 +31,34 @@
       </header>
 
       <main>
-        <div hidden class="list-container">
+        <div class="list-container">
+          <div class="list-header">
+            <h3 class="disclaimer">
+              Choose 1 sauce for 8 wings, 2 for 16.<br /><br />Can do multiple
+              16-piece orders for more flavors.
+            </h3>
+          </div>
           <div class="list-header">
             <!-- to add more columns, copy section class="list-section" -->
             <section class="list-section">
-              <h2 class="list-title">List 1</h2>
+              <h2 class="list-title">Flavors</h2>
               <div class="list-columns">
                 <!-- to add another column, copy ul class=list -->
                 <ul class="list">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
+                  <li>Original</li>
+                  <li>Buffalo</li>
+                  <li>Carolina BBQ</li>
+                  <li>Garlic Parmesan</li>
+                  <li>Hot Lemon Pepper</li>
+                  <li>Jerk Chili</li>
                 </ul>
-              </div>
-            </section>
-            <section class="list-section">
-              <h2 class="list-title">List 2</h2>
-              <div class="list-columns">
                 <ul class="list">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
+                  <li>K.C. BBQ</li>
+                  <li>Lemon Butter Rosemary</li>
+                  <li>Lemon Pepper</li>
+                  <li>Mango Habanero</li>
+                  <li>Sweet Chili</li>
+                  <li>Teriyaki</li>
                 </ul>
               </div>
             </section>
@@ -62,73 +67,71 @@
 
         <div id="menu-items" class="menu-grid">
           <div class="menu-item">
-            <img src="src" alt="" class="menu-item-image" />
+            <img
+              src="https://tb-static.uber.com/prod/image-proc/processed_images/3f38fc3393e49c0403d635d65d374838/bc9c318a9c96996e2d990faf2b0c65f6.jpeg"
+              alt="Wings"
+              class="menu-item-image"
+            />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Item 1</h3>
+                <h3 class="menu-item-name">Wings</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Description 1</p>
+              <p class="menu-item-description">
+                8, 16, or 32 wings w/ choice of sauce.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
 
           <div class="menu-item">
-            <img src="src" alt="" class="menu-item-image" />
+            <img
+              src="https://tb-static.uber.com/prod/image-proc/processed_images/7ee078ec0d1147cfeeb7cbb9138a1e23/70aa2a4db7f990373ca9c376323e3dea.jpeg"
+              alt="Chikky Sammich"
+              class="menu-item-image"
+            />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Item 2</h3>
+                <h3 class="menu-item-name">Chikky Sammich</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Description 2</p>
+              <p class="menu-item-description">
+                Chikky, lettuce, mato, pickle, & ranch.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
 
           <div class="menu-item">
-            <img src="src" alt="" class="menu-item-image" />
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/056/101/508/non_2x/crispy-fried-pickles-appetizer-on-transparent-background-png.png"
+              alt="Fried Pickles"
+              class="menu-item-image"
+            />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Item 3</h3>
+                <h3 class="menu-item-name">Fried Pickles</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Description 3</p>
+              <p class="menu-item-description">Fried pickles w/ ranch.</p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
 
           <div class="menu-item">
-            <img src="src" alt="" class="menu-item-image" />
+            <img
+              src="https://tb-static.uber.com/prod/image-proc/processed_images/83b8b8fc6dfaac618f6f8a503c45c1b5/f47cec1eac1d3b43eccf2318d065819a.jpeg"
+              alt="Fries"
+              class="menu-item-image"
+            />
             <div class="menu-text">
               <div class="menu-text-row1">
-                <h3 class="menu-item-name">Item 4</h3>
+                <h3 class="menu-item-name">Fries</h3>
                 <p class="menu-item-price">1 boop</p>
               </div>
-              <p class="menu-item-description">Description 4</p>
-            </div>
-            <button class="order-btn">Add to Cart</button>
-          </div>
-
-          <div class="menu-item">
-            <img src="src" alt="" class="menu-item-image" />
-            <div class="menu-text">
-              <div class="menu-text-row1">
-                <h3 class="menu-item-name">Item 5</h3>
-                <p class="menu-item-price">1 boop</p>
-              </div>
-              <p class="menu-item-description">Description 5</p>
-            </div>
-            <button class="order-btn">Add to Cart</button>
-          </div>
-
-          <div class="menu-item">
-            <img src="src" alt="" class="menu-item-image" />
-            <div class="menu-text">
-              <div class="menu-text-row1">
-                <h3 class="menu-item-name">Item 6</h3>
-                <p class="menu-item-price">1 boop</p>
-              </div>
-              <p class="menu-item-description">Description 6</p>
+              <p class="menu-item-description">
+                Regular, lemon pepper, or garlic parmesan & truffle.
+              </p>
             </div>
             <button class="order-btn">Add to Cart</button>
           </div>
