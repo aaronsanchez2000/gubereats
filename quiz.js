@@ -182,51 +182,40 @@ sortable.addEventListener("drop", (e) => e.preventDefault());
 
 let draggedClone = null;
 
+// Touch drag events
 sortable.addEventListener("touchstart", (e) => {
   draggedItem = e.target.closest("li");
   if (!draggedItem) return;
 
   draggedItem.classList.add("dragging");
+  draggedItem.style.display = "none"; // hide the original immediately
 
-  draggedClone = draggedItem.cloneNode(true);
-  draggedClone.style.position = "absolute";
-  draggedClone.style.width = `${draggedItem.offsetWidth}px`;
-  draggedClone.style.pointerEvents = "none";
-  draggedClone.style.zIndex = 1000;
-  draggedClone.style.transform = "scale(1.05)";
-  draggedClone.style.transition = "transform 0.2s";
-  document.body.appendChild(draggedClone);
-
-  const rect = draggedItem.getBoundingClientRect();
-  draggedClone.style.left = `${rect.left}px`;
-  draggedClone.style.top = `${rect.top}px`;
-  draggedItem.style.display = "none";
-  placeholder = createPlaceholder();
-  draggedItem.parentNode.insertBefore(placeholder, draggedItem.nextSibling);
+  // create and insert placeholder
+  placeholder =
+    sortable.querySelector(".ranking-placeholder") || createPlaceholder();
+  sortable.insertBefore(placeholder, draggedItem.nextSibling);
 });
 
 sortable.addEventListener("touchmove", (e) => {
   e.preventDefault();
-  if (!draggedClone) return;
+  if (!draggedItem) return;
 
   const touch = e.touches[0];
-  draggedClone.style.left = `${touch.clientX - draggedClone.offsetWidth / 2}px`;
-  draggedClone.style.top = `${touch.clientY - draggedClone.offsetHeight / 2}px`;
-
   const afterElement = getDragAfterElement(sortable, touch.clientY);
-  const placeholder =
+  const currentPlaceholder =
     sortable.querySelector(".ranking-placeholder") || createPlaceholder();
 
-  if (!sortable.contains(placeholder))
-    sortable.insertBefore(placeholder, draggedItem.nextSibling);
+  if (!sortable.contains(currentPlaceholder)) {
+    sortable.insertBefore(currentPlaceholder, draggedItem.nextSibling);
+  }
 
   afterElement
-    ? sortable.insertBefore(placeholder, afterElement)
-    : sortable.appendChild(placeholder);
+    ? sortable.insertBefore(currentPlaceholder, afterElement)
+    : sortable.appendChild(currentPlaceholder);
 });
 
 sortable.addEventListener("touchend", () => {
-  if (!draggedItem || !draggedClone) return;
+  if (!draggedItem) return;
 
   const currentPlaceholder = sortable.querySelector(".ranking-placeholder");
 
@@ -238,11 +227,9 @@ sortable.addEventListener("touchend", () => {
   }
 
   draggedItem.classList.remove("dragging");
-  draggedItem.style.display = "";
-  draggedClone.remove();
-
+  draggedItem.style.display = ""; // show it again
   draggedItem = null;
-  draggedClone = null;
+  placeholder = null;
 });
 
 function getDragAfterElement(container, y) {
