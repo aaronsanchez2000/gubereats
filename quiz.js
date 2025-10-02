@@ -422,7 +422,7 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
 
   // rank boosts
   console.group("Rank Boosts");
-  const rankBoosts = [4, 3, 2, 1, 0, -1];
+  const rankBoosts = [4, 3, 2, 1, 0, 0, -1, -2];
   ranked.forEach((category, i) => {
     if (!rankBoosts[i]) return;
     restaurants
