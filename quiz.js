@@ -469,6 +469,21 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
     console.log(`Preferred choice: ${preferred} +4 -> ${scores[preferred]}`);
   }
 
+  // conditional deductions
+  if (handheld === "utensils" && salad === "no") {
+    ["Bronze Cafe", "Plant Power", "Yukon Pizza"].forEach((r) => {
+      scores[r] -= 4;
+      console.log(`${r} -4 (utensils + no salad) -> ${scores[r]}`);
+    });
+  }
+
+  if (sammichForm !== "yes" && salad === "no") {
+    ["Bronze Cafe", "Plant Power", "Yukon Pizza"].forEach((r) => {
+      scores[r] -= 4;
+      console.log(`${r} -4 (sammichForm != yes + no salad) -> ${scores[r]}`);
+    });
+  }
+
   console.log("Final Scores:");
   console.table(scores);
 
