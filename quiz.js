@@ -180,6 +180,38 @@ sortable.addEventListener("dragover", (e) => {
 
 sortable.addEventListener("drop", (e) => e.preventDefault());
 
+sortable.addEventListener("touchstart", (e) => {
+  draggedItem = e.target.closest("li");
+  if (!draggedItem) return;
+
+  draggedItem.classList.add("dragging");
+});
+
+sortable.addEventListener("touchmove", (e) => {
+  e.preventDefault(); // prevent scrolling
+  const touch = e.touches[0];
+  const afterElement = getDragAfterElement(sortable, touch.clientY);
+  const placeholder =
+    sortable.querySelector(".ranking-placeholder") || createPlaceholder();
+  if (!sortable.contains(placeholder))
+    sortable.insertBefore(placeholder, draggedItem.nextSibling);
+
+  afterElement
+    ? sortable.insertBefore(placeholder, afterElement)
+    : sortable.appendChild(placeholder);
+});
+
+sortable.addEventListener("touchend", () => {
+  if (!draggedItem) return;
+  const placeholder = sortable.querySelector(".ranking-placeholder");
+  if (placeholder) {
+    sortable.insertBefore(draggedItem, placeholder);
+    placeholder.remove();
+  }
+  draggedItem.classList.remove("dragging");
+  draggedItem = null;
+});
+
 function getDragAfterElement(container, y) {
   return [...container.querySelectorAll("li:not(.dragging)")].reduce(
     (closest, child) => {
