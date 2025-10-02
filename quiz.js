@@ -228,14 +228,19 @@ sortable.addEventListener("touchmove", (e) => {
 sortable.addEventListener("touchend", () => {
   if (!draggedItem || !draggedClone) return;
 
-  const placeholder = sortable.querySelector(".ranking-placeholder");
-  if (placeholder) {
-    sortable.insertBefore(draggedItem, placeholder);
-    placeholder.remove();
+  const currentPlaceholder = sortable.querySelector(".ranking-placeholder");
+
+  if (currentPlaceholder) {
+    sortable.insertBefore(draggedItem, currentPlaceholder);
+    currentPlaceholder.remove();
+  } else {
+    sortable.appendChild(draggedItem);
   }
 
   draggedItem.classList.remove("dragging");
+  draggedItem.style.display = "";
   draggedClone.remove();
+
   draggedItem = null;
   draggedClone = null;
 });
