@@ -127,7 +127,7 @@ function createPlaceholder() {
 
 sortable.querySelectorAll("li").forEach((item) => (item.draggable = true));
 
-// dragging stuff
+// dragging events
 sortable.addEventListener("dragstart", (e) => {
   if (e.target.tagName !== "LI") return;
   draggedItem = e.target;
@@ -188,7 +188,6 @@ sortable.addEventListener("touchstart", (e) => {
 
   draggedItem.classList.add("dragging");
 
-  // create clone
   draggedClone = draggedItem.cloneNode(true);
   draggedClone.style.position = "absolute";
   draggedClone.style.width = `${draggedItem.offsetWidth}px`;
@@ -267,20 +266,47 @@ document.querySelectorAll('input[type="range"]').forEach((slider) => {
   });
 });
 
+// error modal
+const modal = document.getElementById("error-modal");
+const closeModalBtn = document.getElementById("close-modal");
+
+function openModal() {
+  modal.showModal();
+}
+
+closeModalBtn.addEventListener("click", () => {
+  modal.close();
+});
+
+// submission validation
 document.getElementById("quiz-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
   const form = e.target;
+  const requiredGroups = [
+    "handheld",
+    "sammich-form",
+    "style",
+    "salad",
+    "drinkie",
+  ];
+  const missing = requiredGroups.some(
+    (name) => !form.querySelector(`input[name="${name}"]:checked`)
+  );
 
-  // check if form is commplete
-  if (!form.checkValidity()) {
-    // get error message if incomplete
-    form.reportValidity();
+  if (missing) {
+    openModal();
+    const firstMissing = requiredGroups.find(
+      (name) => !form.querySelector(`input[name="${name}"]:checked`)
+    );
+    form
+      .querySelector(`input[name="${firstMissing}"]`)
+      .scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
 
-  const submitBtn = document.querySelector("#quiz-form button[type='submit']");
-  submitBtn.disabled = true; // lock submit button (no spam clicks)
+  const submitBtn = form.querySelector("button[type='submit']");
+  submitBtn.disabled = true;
 
   const getVal = (id) => parseInt(document.getElementById(id).value);
   const getChoice = (name) =>
@@ -445,7 +471,7 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
     .getElementById("main-restaurant-img")
     .scrollIntoView({ behavior: "smooth", block: "center" });
 
-  // confetti time
+  // confetti
   const duration = 2000;
   const animationEnd = Date.now() + duration;
   const defaults = { ticks: 200, zIndex: 9999 };
@@ -454,7 +480,7 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
     const timeLeft = animationEnd - Date.now();
     if (timeLeft <= 0) {
       clearInterval(interval);
-      submitBtn.disabled = false; // unlock button after confetti
+      submitBtn.disabled = false;
       return;
     }
 

@@ -24,7 +24,7 @@
 
       <main>
         <div class="quiz-container">
-          <form id="quiz-form">
+          <form id="quiz-form" novalidate>
             <div class="quiz-card">
               <h2 class="quiz-card-header">What should we get?</h2>
 
@@ -80,12 +80,7 @@
                   Do you want something handheld or with utensils?
                 </p>
                 <label
-                  ><input
-                    type="radio"
-                    name="handheld"
-                    value="handheld"
-                    required
-                  />
+                  ><input type="radio" name="handheld" value="handheld" />
                   Handheld</label
                 >
                 <label
@@ -103,7 +98,6 @@
                     type="radio"
                     name="sammich-form"
                     value="sammich-form"
-                    required
                   />
                   Sammich/Borg</label
                 >
@@ -122,7 +116,7 @@
                   Do you want something classic or more unique?
                 </p>
                 <label
-                  ><input type="radio" name="style" value="classic" required />
+                  ><input type="radio" name="style" value="classic" />
                   Classic</label
                 >
                 <label
@@ -134,8 +128,7 @@
               <div class="question">
                 <p class="quiz-question">Are you craving a salad?</p>
                 <label
-                  ><input type="radio" name="salad" value="yes" required />
-                  Yes</label
+                  ><input type="radio" name="salad" value="yes" /> Yes</label
                 >
                 <label><input type="radio" name="salad" value="no" /> No</label>
               </div>
@@ -143,8 +136,7 @@
               <div class="question">
                 <p class="quiz-question">Do you plan to get a drinkie?</p>
                 <label
-                  ><input type="radio" name="drinkie" value="yes" required />
-                  Yes</label
+                  ><input type="radio" name="drinkie" value="yes" /> Yes</label
                 >
                 <label
                   ><input type="radio" name="drinkie" value="no" /> No</label
@@ -201,14 +193,17 @@
                   <option value="Yukon Pizza">Yukon Pizza</option>
                 </select>
 
-                <a href="#result"
-                  ><button type="submit" class="order-btn order-btn-quiz">
-                    Submit
-                  </button></a
-                >
+                <button type="submit" class="order-btn order-btn-quiz">
+                  Submit
+                </button>
               </div>
             </div>
           </form>
+
+          <dialog id="error-modal">
+            <p>Please answer all questions!</p>
+            <button id="close-modal">OK</button>
+          </dialog>
 
           <!-- results -->
           <div id="result" class="hidden">
