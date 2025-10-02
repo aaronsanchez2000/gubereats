@@ -200,6 +200,9 @@ sortable.addEventListener("touchstart", (e) => {
   const rect = draggedItem.getBoundingClientRect();
   draggedClone.style.left = `${rect.left}px`;
   draggedClone.style.top = `${rect.top}px`;
+  draggedItem.style.display = "none";
+  placeholder = createPlaceholder();
+  draggedItem.parentNode.insertBefore(placeholder, draggedItem.nextSibling);
 });
 
 sortable.addEventListener("touchmove", (e) => {
