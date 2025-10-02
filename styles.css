@@ -507,6 +507,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
 .list-header {
@@ -514,17 +515,16 @@ main {
   flex-direction: row;
   justify-content: center;
   gap: 5rem;
-  margin-top: 1rem;
-  width: max-content;
-  max-width: 90%;
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+
   text-align: center;
   background: #fff;
   border-radius: 8px;
   padding: 2rem;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .list-section {
