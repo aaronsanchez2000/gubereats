@@ -16,6 +16,7 @@
 
 html {
   font-size: calc(14px + 0.1vw);
+  scroll-behavior: smooth;
 }
 
 body {

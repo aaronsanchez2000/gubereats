@@ -85,14 +85,14 @@ const restaurants = [
   },
   {
     name: "Subway",
-    img: "restaurant-logos/subway-logo.png",
+    img: "restaurant-logos/subway-logo2.png",
     link: "subway.html",
     tags: ["sammich", "classic", "handheld"],
     flavor: ["savory"],
   },
   {
     name: "Taco Bell",
-    img: "restaurant-logos/tacobell-logo.png",
+    img: "restaurant-logos/tacobell-logo3.png",
     link: "tacobell.html",
     tags: ["tacos", "classic", "handheld"],
     flavor: ["savory", "spicy"],
@@ -180,49 +180,62 @@ sortable.addEventListener("dragover", (e) => {
 
 sortable.addEventListener("drop", (e) => e.preventDefault());
 
+let draggedClone = null;
+
 sortable.addEventListener("touchstart", (e) => {
   draggedItem = e.target.closest("li");
   if (!draggedItem) return;
 
   draggedItem.classList.add("dragging");
-  placeholder = createPlaceholder();
 
-  // insert placeholder and hide dragged item
-  setTimeout(() => {
-    draggedItem.style.display = "none";
-    draggedItem.parentNode.insertBefore(placeholder, draggedItem);
-  }, 0);
+  // create clone
+  draggedClone = draggedItem.cloneNode(true);
+  draggedClone.style.position = "absolute";
+  draggedClone.style.width = `${draggedItem.offsetWidth}px`;
+  draggedClone.style.pointerEvents = "none";
+  draggedClone.style.zIndex = 1000;
+  draggedClone.style.transform = "scale(1.05)";
+  draggedClone.style.transition = "transform 0.2s";
+  document.body.appendChild(draggedClone);
+
+  const rect = draggedItem.getBoundingClientRect();
+  draggedClone.style.left = `${rect.left}px`;
+  draggedClone.style.top = `${rect.top}px`;
 });
 
 sortable.addEventListener("touchmove", (e) => {
-  e.preventDefault(); // prevent scrolling
-  if (!draggedItem) return;
+  e.preventDefault();
+  if (!draggedClone) return;
 
   const touch = e.touches[0];
-  const afterElement = getDragAfterElement(sortable, touch.clientY);
+  draggedClone.style.left = `${touch.clientX - draggedClone.offsetWidth / 2}px`;
+  draggedClone.style.top = `${touch.clientY - draggedClone.offsetHeight / 2}px`;
 
-  const currentPlaceholder =
+  const afterElement = getDragAfterElement(sortable, touch.clientY);
+  const placeholder =
     sortable.querySelector(".ranking-placeholder") || createPlaceholder();
-  if (!sortable.contains(currentPlaceholder))
-    sortable.appendChild(currentPlaceholder);
+
+  if (!sortable.contains(placeholder))
+    sortable.insertBefore(placeholder, draggedItem.nextSibling);
 
   afterElement
-    ? sortable.insertBefore(currentPlaceholder, afterElement)
-    : sortable.appendChild(currentPlaceholder);
+    ? sortable.insertBefore(placeholder, afterElement)
+    : sortable.appendChild(placeholder);
 });
 
 sortable.addEventListener("touchend", () => {
-  if (!draggedItem) return;
+  if (!draggedItem || !draggedClone) return;
 
-  const currentPlaceholder = sortable.querySelector(".ranking-placeholder");
-  if (currentPlaceholder) {
-    currentPlaceholder.parentNode.insertBefore(draggedItem, currentPlaceholder);
-    currentPlaceholder.remove();
+  const placeholder = sortable.querySelector(".ranking-placeholder");
+  if (placeholder) {
+    sortable.insertBefore(draggedItem, placeholder);
+    placeholder.remove();
   }
 
-  draggedItem.style.display = "";
   draggedItem.classList.remove("dragging");
+  draggedClone.remove();
   draggedItem = null;
+  draggedClone = null;
 });
 
 function getDragAfterElement(container, y) {
@@ -419,6 +432,9 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
   updateResult("backup", backupRestaurant);
 
   document.getElementById("result").classList.remove("hidden");
+  document
+    .getElementById("main-restaurant-img")
+    .scrollIntoView({ behavior: "smooth", block: "center" });
 
   // confetti time
   const duration = 2000;
