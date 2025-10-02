@@ -188,12 +188,12 @@ sortable.addEventListener("touchstart", (e) => {
   if (!draggedItem) return;
 
   draggedItem.classList.add("dragging");
-  draggedItem.style.display = "none"; // hide the original immediately
 
-  // create and insert placeholder
-  placeholder =
-    sortable.querySelector(".ranking-placeholder") || createPlaceholder();
+  // create and insert placeholder BEFORE hiding the item
+  placeholder = createPlaceholder();
   sortable.insertBefore(placeholder, draggedItem.nextSibling);
+
+  draggedItem.style.display = "none"; // hide the original after placeholder is placed
 });
 
 sortable.addEventListener("touchmove", (e) => {
@@ -202,12 +202,9 @@ sortable.addEventListener("touchmove", (e) => {
 
   const touch = e.touches[0];
   const afterElement = getDragAfterElement(sortable, touch.clientY);
-  const currentPlaceholder =
-    sortable.querySelector(".ranking-placeholder") || createPlaceholder();
+  const currentPlaceholder = sortable.querySelector(".ranking-placeholder");
 
-  if (!sortable.contains(currentPlaceholder)) {
-    sortable.insertBefore(currentPlaceholder, draggedItem.nextSibling);
-  }
+  if (!currentPlaceholder) return;
 
   afterElement
     ? sortable.insertBefore(currentPlaceholder, afterElement)
@@ -385,13 +382,15 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
 
   // sammich bonus
   console.group("Sammich Bonus");
-  ["Bronze Cafe", "Ike's", "Smash Me Baby", "Subway"].forEach((r) => {
-    const delta = sammichForm === "yes" ? 3 : -3;
-    scores[r] += delta;
-    console.log(
-      `${r} ${delta >= 0 ? "+" : ""}${delta} (sammich) -> ${scores[r]}`
-    );
-  });
+  ["Bronze Cafe", "Burger King", "Ike's", "Smash Me Baby", "Subway"].forEach(
+    (r) => {
+      const delta = sammichForm === "yes" ? 3 : -3;
+      scores[r] += delta;
+      console.log(
+        `${r} ${delta >= 0 ? "+" : ""}${delta} (sammich) -> ${scores[r]}`
+      );
+    }
+  );
   console.groupEnd();
 
   // handheld vs. utensils
