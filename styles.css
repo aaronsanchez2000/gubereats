@@ -282,6 +282,9 @@ main {
   height: 20%;
   max-height: 3rem;
   width: 100%;
+}
+
+.order-btn-quiz {
   margin-bottom: -2rem;
 }
 
