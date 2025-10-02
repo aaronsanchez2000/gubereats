@@ -516,6 +516,8 @@ main {
   padding: 2rem;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .list-section {
@@ -558,6 +560,7 @@ main {
 }
 
 .list-container {
+  display: flex;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
