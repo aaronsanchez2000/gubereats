@@ -270,6 +270,15 @@ document.querySelectorAll('input[type="range"]').forEach((slider) => {
 document.getElementById("quiz-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const form = e.target;
+
+  // check if form is commplete
+  if (!form.checkValidity()) {
+    // get error message if incomplete
+    form.reportValidity();
+    return;
+  }
+
   const submitBtn = document.querySelector("#quiz-form button[type='submit']");
   submitBtn.disabled = true; // lock submit button (no spam clicks)
 

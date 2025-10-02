@@ -734,6 +734,18 @@ input[type="range"]::-moz-range-thumb {
   margin-bottom: 2rem;
   width: 100%;
   box-sizing: border-box;
+  color: var(--color-main);
+}
+
+#preferred-choice option[value=""] {
+  color: #999;
+}
+
+#preferred-choice:focus,
+#preferred-choice:active {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 5px var(--color-main);
 }
 
 select {
