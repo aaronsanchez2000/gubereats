@@ -503,8 +503,14 @@ main {
   background: #e5f6ff;
 }
 
-.list-header {
+.list-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-header {
+  display: inline-flex;
   flex-direction: row;
   justify-self: center;
   justify-content: center;
@@ -557,13 +563,6 @@ main {
   display: flex;
   flex-direction: row;
   gap: 2rem;
-}
-
-.list-container {
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .quiz-card {
@@ -907,8 +906,8 @@ select {
     margin: 3rem auto;
   }
   #cart-sidebar {
-    right: -70%;
-    width: 70%;
+    right: -60%;
+    width: 60%;
   }
   .cart-row {
     font-size: 0.6rem;
