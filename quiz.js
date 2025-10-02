@@ -185,29 +185,42 @@ sortable.addEventListener("touchstart", (e) => {
   if (!draggedItem) return;
 
   draggedItem.classList.add("dragging");
+  placeholder = createPlaceholder();
+
+  // insert placeholder and hide dragged item
+  setTimeout(() => {
+    draggedItem.style.display = "none";
+    draggedItem.parentNode.insertBefore(placeholder, draggedItem);
+  }, 0);
 });
 
 sortable.addEventListener("touchmove", (e) => {
   e.preventDefault(); // prevent scrolling
+  if (!draggedItem) return;
+
   const touch = e.touches[0];
   const afterElement = getDragAfterElement(sortable, touch.clientY);
-  const placeholder =
+
+  const currentPlaceholder =
     sortable.querySelector(".ranking-placeholder") || createPlaceholder();
-  if (!sortable.contains(placeholder))
-    sortable.insertBefore(placeholder, draggedItem.nextSibling);
+  if (!sortable.contains(currentPlaceholder))
+    sortable.appendChild(currentPlaceholder);
 
   afterElement
-    ? sortable.insertBefore(placeholder, afterElement)
-    : sortable.appendChild(placeholder);
+    ? sortable.insertBefore(currentPlaceholder, afterElement)
+    : sortable.appendChild(currentPlaceholder);
 });
 
 sortable.addEventListener("touchend", () => {
   if (!draggedItem) return;
-  const placeholder = sortable.querySelector(".ranking-placeholder");
-  if (placeholder) {
-    sortable.insertBefore(draggedItem, placeholder);
-    placeholder.remove();
+
+  const currentPlaceholder = sortable.querySelector(".ranking-placeholder");
+  if (currentPlaceholder) {
+    currentPlaceholder.parentNode.insertBefore(draggedItem, currentPlaceholder);
+    currentPlaceholder.remove();
   }
+
+  draggedItem.style.display = "";
   draggedItem.classList.remove("dragging");
   draggedItem = null;
 });
