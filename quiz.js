@@ -470,17 +470,17 @@ document.getElementById("quiz-form").addEventListener("submit", (e) => {
   }
 
   // conditional deductions
-  if (handheld === "utensils" && salad === "no") {
+  if (handheld === "utensils" && salad !== "yes") {
     ["Bronze Cafe", "Plant Power", "Yukon Pizza"].forEach((r) => {
       scores[r] -= 4;
-      console.log(`${r} -4 (utensils + no salad) -> ${scores[r]}`);
+      console.log(`${r} -4 (utensils + no/unsure salad) -> ${scores[r]}`);
     });
   }
 
-  if (sammichForm !== "yes" && salad === "no") {
+  if (sammichForm === "no" && salad !== "yes") {
     ["Bronze Cafe", "Plant Power", "Yukon Pizza"].forEach((r) => {
       scores[r] -= 4;
-      console.log(`${r} -4 (sammichForm != yes + no salad) -> ${scores[r]}`);
+      console.log(`${r} -4 (no sammichForm + no/unsure salad) -> ${scores[r]}`);
     });
   }
 
